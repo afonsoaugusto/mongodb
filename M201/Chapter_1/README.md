@@ -25,7 +25,7 @@ Operations in memory
 ### Architeture Storage Recomendation
 ![RAID 10](../images/RAID_10.svg)
 
-![Architecture_MongoDB](../images/mongodb_ architecture_diagram.png)
+![Architecture_MongoDB](../images/mongodb_architecture_diagram.png)
 
 
 
