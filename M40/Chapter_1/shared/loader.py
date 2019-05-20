@@ -49,14 +49,12 @@ def handle_commit(s):
         try:
             s.commit_transaction()
             break
-        except (OperationFailure, ConnectionFailure) as exc:
+        except (pymongo.errors.OperationFailure, pymongo.errors.ConnectionFailure) as exc:
             if exc.has_error_label("UnknownTransactionCommitResult"):
-                      print("Unknown commit result, retrying...")
-                      continue
-            raise
-        except Exception as exc:
-            # do something here
-            raise
+                print("Commit error: {} retrying commit ... ".format(exc))
+                continue
+            else:
+                raise
 
 
 def write_batch(batch, mc, s):
@@ -89,14 +87,19 @@ def load_data(q, batch, uri):
     try:
         # LAB - needs error handling
         with mc.start_session() as s:
-            try:
-                batch_total_population,batch_docs = write_batch(batch, mc, s)
-            except Exception as exc:
-                # Do something here!
-                print("Error - what shall I do ??!??! {}".format(exc))
-                raise
+            while True:
+                try:
+                    batch_total_population,batch_docs = write_batch(batch, mc, s)
+                    break
+                except (pymongo.errors.OperationFailure, pymongo.errors.ConnectionFailure) as exc:
+                    if exc.has_error_label("TransientTransactionError"):
+                        print("Error detected: {} - abort".format(exc))
+                        s.abort_transaction()
+                        continue
+                    else:
+                        raise
 
-            q.put({"batch_pop": batch_total_population, "batch_docs": batch_docs})
+        q.put({"batch_pop": batch_total_population, "batch_docs": batch_docs})
 
     except Exception as e:
         print("Unexpected error found: {}".format(e))
