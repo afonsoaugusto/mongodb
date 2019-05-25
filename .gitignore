@@ -1,0 +1,4 @@
+.vagrant
+*.zip
+environment_setup
+notas.txt

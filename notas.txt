@@ -1,0 +1,18 @@
+m001-student
+oORqZ8ZGmyzIFHoF
+
+mongodb+srv://m001-student:oORqZ8ZGmyzIFHoF@sandbox-felrd.mongodb.net/test
+
+mongo "mongodb+srv://sandbox-felrd.mongodb.net/test" --username m001-student
+
+
+mongoimport -h sandbox-felrd.mongodb.net --username m001-student -p oORqZ8ZGmyzIFHoF -d m201 -c people --drop people.json
+
+mongoimport --host Sandbox-shard-0/sandbox-shard-00-00-felrd.mongodb.net:27017,sandbox-shard-00-01-felrd.mongodb.net:27017,sandbox-shard-00-02-felrd.mongodb.net:27017 \
+            --ssl --username m001-student \
+            --password <PASSWORD> \
+            --authenticationDatabase admin \
+            --db m201 \
+            --collection people \
+            --type json \
+            --file people.json
