@@ -29,3 +29,22 @@ https://university.mongodb.com/mercury/M201
 * If field not exists in document, when created index this field is registred with value null.
 
 * Not recommended create index on subdocument without dot notation.
+
+### Querying on Compound Indexes Part 1
+
+```
+wget https://s3.amazonaws.com/m312/people.json
+
+mongoimport --host Sandbox-shard-0/sandbox-shard-00-00-felrd.mongodb.net:27017,sandbox-shard-00-01-felrd.mongodb.net:27017,sandbox-shard-00-02-felrd.mongodb.net:27017 \
+            --ssl --username m001-student \
+            --password <PASSWORD> \
+            --authenticationDatabase admin \
+            --db m201 \
+            --collection people \
+            --type json \
+            --file people.json
+```
+
+```
+{"last_name": "Frazier","frist_name":"Jasmine"}
+```
