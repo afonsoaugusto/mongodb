@@ -1,17 +1,17 @@
 m001-student
 
-mongodb+srv://m001-student:<password>@sandbox-felrd.mongodb.net/test
 
-mongo "mongodb+srv://sandbox-felrd.mongodb.net/test" --username m001-student
+mongodb+srv://m001-student:<password>@presto-y6n3s.mongodb.net/test
 
+mongo "mongodb+srv://presto-y6n3s.mongodb.net/test" --username m001-student --password <password>
 
 mongoimport -h sandbox-felrd.mongodb.net --username m001-student  -d m201 -c people --drop people.json
 
-mongoimport --host Sandbox-shard-0/sandbox-shard-00-00-felrd.mongodb.net:27017,sandbox-shard-00-01-felrd.mongodb.net:27017,sandbox-shard-00-02-felrd.mongodb.net:27017 \
+mongoimport --host presto-shard-0/presto-shard-00-00-y6n3s.mongodb.net:27017,presto-shard-00-01-y6n3s.mongodb.net:27017,presto-shard-00-02-y6n3s.mongodb.net:27017 \
             --ssl --username m001-student \
-            --password <PASSWORD> \
+            --password <password> \
             --authenticationDatabase admin \
             --db m201 \
-            --collection people \
+            --collection restaurants \
             --type json \
-            --file people.json
+            --file restaurants.json
