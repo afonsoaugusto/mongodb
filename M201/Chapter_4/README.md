@@ -151,8 +151,13 @@ db.restaurants.aggregate([
   { $match: { stars: { $gt: 2 } } },
   { $sort: { stars: 1 } },
   { $group: { _id: "$cuisine", count: { $sum: 1 } } }
+])
+
+db.restaurants.aggregate([
+  { $match: { stars: { $gt: 2 } } },
+  { $sort: { stars: 1 } },
+  { $group: { _id: "$cuisine", count: { $sum: 1 } } }
 ],{explain:true})
 
-db.restaurants.createIndex({ cuisine: 1, star: 1, _id:1 })
-db.restaurants.createIndex({ star: 1, cuisine: 1, _id:1 })
+db.restaurants.createIndex({ stars: 1 })
 ```
