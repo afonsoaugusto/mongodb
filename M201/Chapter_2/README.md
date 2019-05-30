@@ -8,7 +8,7 @@ https://university.mongodb.com/mercury/M201
 ### Index Overhead
 [Indexes](https://docs.mongodb.com/manual/indexes/?jmp=university)
 
-### Data is Storad in Disk
+### Data is Storage in Disk
 
 * Use the different disks possibilite increase the performance
 
