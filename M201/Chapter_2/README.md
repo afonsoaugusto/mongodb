@@ -15,6 +15,10 @@ https://university.mongodb.com/mercury/M201
 ![Files Structure](../images/files-structure.png)
 ![Diferrents Structure](../images/Diferrents_Disks.png)
 
+
+* [storage.directoryPerDB](https://docs.mongodb.com/manual/reference/configuration-options/#storage.directoryPerDB)
+* [directoryForIndexes](https://docs.mongodb.com/manual/reference/configuration-options/#storage.wiredTiger.engineConfig.directoryForIndexes)
+
 ### Single Field Indexes
 
 * Simplest indexes in MongoDB
@@ -63,9 +67,6 @@ mongoimport --host Sandbox-shard-0/sandbox-shard-00-00-felrd.mongodb.net:27017,s
 ![Index Prefixes](../images/Index_Prefixes.png)
 
 * For a query on mutiple fields that overlap with the index, idenify wich fields in the query can use the index.
-
-[storage.directoryPerDB](https://docs.mongodb.com/manual/reference/configuration-options/#storage.directoryPerDB)
-[directoryForIndexes](https://docs.mongodb.com/manual/reference/configuration-options/#storage.wiredTiger.engineConfig.directoryForIndexes)
 
 ### When you can sort with Indexes
 
