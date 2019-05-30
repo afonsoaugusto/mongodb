@@ -64,6 +64,9 @@ mongoimport --host Sandbox-shard-0/sandbox-shard-00-00-felrd.mongodb.net:27017,s
 
 * For a query on mutiple fields that overlap with the index, idenify wich fields in the query can use the index.
 
+[storage.directoryPerDB](https://docs.mongodb.com/manual/reference/configuration-options/#storage.directoryPerDB)
+[directoryForIndexes](https://docs.mongodb.com/manual/reference/configuration-options/#storage.wiredTiger.engineConfig.directoryForIndexes)
+
 ### When you can sort with Indexes
 
 [Sort results with indexes](https://docs.mongodb.com/manual/tutorial/sort-results-with-indexes/?jmp=university)
